@@ -70,7 +70,7 @@ function LoginScreen({ navigation, onLogin }: any) {
     try {
       console.log('Attempting login with:', { email, password: '***' });
       
-      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ function LoginScreen({ navigation, onLogin }: any) {
     try {
       console.log('Attempting registration with:', { email, password: '***' });
       
-      const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+      const response = await fetch(`${API_BASE_URL}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -199,7 +199,7 @@ function HomeScreen({ user }: { user: User }) {
 
   const fetchContent = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/content`);
+      const response = await fetch(`${API_BASE_URL}/content`);
       const data = await response.json();
       setContent(data.content || []);
     } catch (error) {
@@ -267,7 +267,7 @@ function SubscriptionScreen({ user }: { user: User }) {
 
   const fetchPlans = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/stripe/plans`);
+      const response = await fetch(`${API_BASE_URL}/stripe/plans`);
       const data = await response.json();
       setPlans(data.plans || []);
     } catch (error) {
@@ -375,7 +375,7 @@ function ProfileScreen({ user, onLogout }: { user: User; onLogout: () => void })
       // Get the auth token from secure storage
       const token = await Storage.getItem('authToken');
       
-      const response = await fetch(`${API_BASE_URL}/api/auth/profile`, {
+      const response = await fetch(`${API_BASE_URL}/auth/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -556,7 +556,7 @@ export default function App() {
 
       console.log('Checking auth status with token:', token.substring(0, 20) + '...');
       
-      const response = await fetch(`${API_BASE_URL}/api/auth/profile`, {
+      const response = await fetch(`${API_BASE_URL}/auth/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
