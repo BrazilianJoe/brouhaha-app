@@ -50,7 +50,7 @@ interface SubscriptionPlan {
 
 const API_BASE_URL = Platform.OS === 'web' 
   ? (process.env.NODE_ENV === 'production' 
-    ? 'https://your-backend-url.railway.app' 
+    ? '/api'  // Vercel serverless functions
     : 'http://localhost:3001')
   : 'http://192.168.1.15:3001';
 
