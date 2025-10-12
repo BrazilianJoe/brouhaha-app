@@ -48,7 +48,11 @@ interface SubscriptionPlan {
   features: string[];
 }
 
-const API_BASE_URL = Platform.OS === 'web' ? 'http://localhost:3001' : 'http://192.168.1.15:3001';
+const API_BASE_URL = Platform.OS === 'web' 
+  ? (process.env.NODE_ENV === 'production' 
+    ? 'https://your-backend-url.railway.app' 
+    : 'http://localhost:3001')
+  : 'http://192.168.1.15:3001';
 
 // Screens
 function LoginScreen({ navigation, onLogin }: any) {
