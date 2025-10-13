@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from '@clerk/clerk-react';
 
-function App() {
+function AppContent() {
+  const { user } = useUser();
   console.log('App component rendering');
 
   return (
@@ -14,7 +16,17 @@ function App() {
             <a href="#content" style={styles.navLink}>Content</a>
             <a href="#pricing" style={styles.navLink}>Pricing</a>
             <a href="#about" style={styles.navLink}>About</a>
-            <button style={styles.signInBtn}>Sign In</button>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button style={styles.signInBtn}>Sign In</button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <div style={styles.userSection}>
+                <span style={styles.userName}>Welcome, {user?.firstName || user?.emailAddresses[0]?.emailAddress}</span>
+                <UserButton afterSignOutUrl="/" />
+              </div>
+            </SignedIn>
           </div>
         </nav>
       </header>
@@ -189,6 +201,15 @@ const styles = {
     cursor: 'pointer',
     fontSize: '0.9rem',
     transition: 'all 0.3s ease',
+  },
+  userSection: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
+  },
+  userName: {
+    color: 'rgba(255, 255, 255, 0.8)',
+    fontSize: '0.9rem',
   },
   main: {
     paddingTop: '80px',
@@ -432,11 +453,31 @@ if (typeof window !== 'undefined') {
   `;
   document.head.appendChild(style);
   
+  // Set environment variables for Clerk
+  if (!process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY) {
+    process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY = 'pk_test_c3VpdGVkLWtvZGlhay05NC5jbGVyay5hY2NvdW50cy5kZXYk';
+  }
+  
   const container = document.getElementById('root');
   if (container) {
     const root = createRoot(container);
     root.render(<App />);
   }
+}
+
+function App() {
+  const clerkPublishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  
+  if (!clerkPublishableKey) {
+    console.error('Missing Clerk publishable key');
+    return <div>Missing Clerk configuration</div>;
+  }
+
+  return (
+    <ClerkProvider publishableKey={clerkPublishableKey}>
+      <AppContent />
+    </ClerkProvider>
+  );
 }
 
 export default App;
