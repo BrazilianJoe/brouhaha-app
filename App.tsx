@@ -700,6 +700,27 @@ function App() {
               color: '#5a6fd8',
             },
           },
+          // Target the specific "Secured by Clerk" elements in UserButton popover
+          userButtonPopoverFooter: {
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            '& p': {
+              color: 'rgba(255, 255, 255, 0.9) !important',
+              fontSize: '0.75rem !important',
+              fontWeight: '500 !important',
+            },
+            '& a': {
+              color: '#feca57 !important',
+              fontWeight: '600 !important',
+              filter: 'brightness(1.2) !important',
+              '&:hover': {
+                color: '#ffd700 !important',
+              },
+            },
+            '& svg': {
+              filter: 'brightness(1.3) !important',
+            },
+          },
           // Profile modal specific elements
           profileSectionTitle: {
             color: '#ffffff',
