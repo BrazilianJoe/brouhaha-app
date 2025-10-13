@@ -7,6 +7,30 @@ function AppContent() {
   const { user } = useUser();
   console.log('App component rendering');
 
+  // Mock role system - in real app, this would come from your backend
+  const getUserRole = (email) => {
+    if (email === 'tiago.freire@gmail.com') return 'superadmin';
+    if (email?.includes('admin')) return 'admin';
+    if (email?.includes('moderator')) return 'moderator';
+    if (email?.includes('creator')) return 'creator';
+    return 'reader';
+  };
+
+  const getRoleInfo = (role) => {
+    const roleMap = {
+      superadmin: { name: 'Super Admin', color: '#ff6b6b', icon: '👑' },
+      admin: { name: 'Administrator', color: '#667eea', icon: '🛡️' },
+      moderator: { name: 'Moderator', color: '#feca57', icon: '⚖️' },
+      creator: { name: 'Creator', color: '#48dbfb', icon: '🎨' },
+      reader: { name: 'Reader', color: '#a55eea', icon: '👤' }
+    };
+    return roleMap[role] || roleMap.reader;
+  };
+
+  const userEmail = user?.emailAddresses?.[0]?.emailAddress;
+  const userRole = getUserRole(userEmail);
+  const roleInfo = getRoleInfo(userRole);
+
   return (
     <div style={styles.container}>
       {/* Hero Section */}
@@ -17,6 +41,14 @@ function AppContent() {
             <a href="#content" style={styles.navLink}>Content</a>
             <a href="#pricing" style={styles.navLink}>Pricing</a>
             <a href="#about" style={styles.navLink}>About</a>
+            <SignedIn>
+              {(userRole === 'superadmin' || userRole === 'admin') && (
+                <a href="#admin" style={styles.navLink}>Admin</a>
+              )}
+              {userRole === 'creator' && (
+                <a href="#creator" style={styles.navLink}>Creator</a>
+              )}
+            </SignedIn>
             <SignedOut>
               <SignInButton mode="modal">
                 <button style={styles.signInBtn}>Sign In</button>
@@ -24,7 +56,13 @@ function AppContent() {
             </SignedOut>
             <SignedIn>
               <div style={styles.userSection}>
-                <span style={styles.userName}>Welcome, {user?.firstName || user?.emailAddresses[0]?.emailAddress}</span>
+                <div style={styles.userInfo}>
+                  <span style={styles.userName}>Welcome, {user?.firstName || user?.emailAddresses[0]?.emailAddress}</span>
+                  <div style={{...styles.roleBadge, backgroundColor: roleInfo.color}}>
+                    <span style={styles.roleIcon}>{roleInfo.icon}</span>
+                    <span style={styles.roleText}>{roleInfo.name}</span>
+                  </div>
+                </div>
                 <UserButton afterSignOutUrl="/" />
               </div>
             </SignedIn>
@@ -94,30 +132,94 @@ function AppContent() {
           </div>
         </section>
 
-        {/* Content Preview */}
-        <section style={styles.contentPreview}>
-          <h3 style={styles.sectionTitle}>Featured Content</h3>
-          <div style={styles.contentGrid}>
-            <div style={styles.contentCard}>
-              <div style={styles.contentThumbnail}>📖</div>
-              <h4 style={styles.contentTitle}>Epic Fantasy Saga</h4>
-              <p style={styles.contentDesc}>An immersive webtoon adventure</p>
-              <div style={styles.contentType}>WEBTOON</div>
-            </div>
-            <div style={styles.contentCard}>
-              <div style={styles.contentThumbnail}>📚</div>
-              <h4 style={styles.contentTitle}>Sci-Fi Chronicles</h4>
-              <p style={styles.contentDesc}>A gripping book series</p>
-              <div style={styles.contentType}>BOOK</div>
-            </div>
-            <div style={styles.contentCard}>
-              <div style={styles.contentThumbnail}>🎬</div>
-              <h4 style={styles.contentTitle}>Action Thriller</h4>
-              <p style={styles.contentDesc}>High-octane entertainment</p>
-              <div style={styles.contentType}>VIDEO</div>
-            </div>
-          </div>
-        </section>
+            {/* Content Preview */}
+            <section style={styles.contentPreview}>
+              <h3 style={styles.sectionTitle}>Featured Content</h3>
+              <div style={styles.contentGrid}>
+                <div style={styles.contentCard}>
+                  <div style={styles.contentThumbnail}>📖</div>
+                  <h4 style={styles.contentTitle}>Epic Fantasy Saga</h4>
+                  <p style={styles.contentDesc}>An immersive webtoon adventure</p>
+                  <div style={styles.contentType}>WEBTOON</div>
+                </div>
+                <div style={styles.contentCard}>
+                  <div style={styles.contentThumbnail}>📚</div>
+                  <h4 style={styles.contentTitle}>Sci-Fi Chronicles</h4>
+                  <p style={styles.contentDesc}>A gripping book series</p>
+                  <div style={styles.contentType}>BOOK</div>
+                </div>
+                <div style={styles.contentCard}>
+                  <div style={styles.contentThumbnail}>🎬</div>
+                  <h4 style={styles.contentTitle}>Action Thriller</h4>
+                  <p style={styles.contentDesc}>High-octane entertainment</p>
+                  <div style={styles.contentType}>VIDEO</div>
+                </div>
+              </div>
+            </section>
+
+            {/* Admin Dashboard */}
+            <SignedIn>
+              {(userRole === 'superadmin' || userRole === 'admin') && (
+                <section id="admin" style={styles.adminSection}>
+                  <h3 style={styles.sectionTitle}>Admin Dashboard</h3>
+                  <div style={styles.adminGrid}>
+                    <div style={styles.adminCard}>
+                      <div style={styles.adminIcon}>👥</div>
+                      <h4 style={styles.adminTitle}>User Management</h4>
+                      <p style={styles.adminDesc}>Manage user accounts and roles</p>
+                      <button style={styles.adminBtn}>Manage Users</button>
+                    </div>
+                    <div style={styles.adminCard}>
+                      <div style={styles.adminIcon}>📊</div>
+                      <h4 style={styles.adminTitle}>Analytics</h4>
+                      <p style={styles.adminDesc}>View platform analytics and reports</p>
+                      <button style={styles.adminBtn}>View Analytics</button>
+                    </div>
+                    <div style={styles.adminCard}>
+                      <div style={styles.adminIcon}>💰</div>
+                      <h4 style={styles.adminTitle}>Payments</h4>
+                      <p style={styles.adminDesc}>Manage subscriptions and payments</p>
+                      <button style={styles.adminBtn}>Manage Payments</button>
+                    </div>
+                    <div style={styles.adminCard}>
+                      <div style={styles.adminIcon}>🎬</div>
+                      <h4 style={styles.adminTitle}>Content</h4>
+                      <p style={styles.adminDesc}>Moderate and manage content</p>
+                      <button style={styles.adminBtn}>Manage Content</button>
+                    </div>
+                  </div>
+                </section>
+              )}
+            </SignedIn>
+
+            {/* Creator Dashboard */}
+      <SignedIn>
+              {userRole === 'creator' && (
+                <section id="creator" style={styles.creatorSection}>
+                  <h3 style={styles.sectionTitle}>Creator Dashboard</h3>
+                  <div style={styles.creatorGrid}>
+                    <div style={styles.creatorCard}>
+                      <div style={styles.creatorIcon}>📝</div>
+                      <h4 style={styles.creatorTitle}>Create Content</h4>
+                      <p style={styles.creatorDesc}>Upload webtoons, books, or videos</p>
+                      <button style={styles.creatorBtn}>Create New</button>
+                    </div>
+                    <div style={styles.creatorCard}>
+                      <div style={styles.creatorIcon}>📈</div>
+                      <h4 style={styles.creatorTitle}>Analytics</h4>
+                      <p style={styles.creatorDesc}>View your content performance</p>
+                      <button style={styles.creatorBtn}>View Analytics</button>
+                    </div>
+                    <div style={styles.creatorCard}>
+                      <div style={styles.creatorIcon}>💎</div>
+                      <h4 style={styles.creatorTitle}>Earnings</h4>
+                      <p style={styles.creatorDesc}>Track your revenue and payments</p>
+                      <button style={styles.creatorBtn}>View Earnings</button>
+                    </div>
+                  </div>
+                </section>
+              )}
+      </SignedIn>
       </main>
 
       {/* Footer */}
@@ -203,15 +305,39 @@ const styles = {
     fontSize: '0.9rem',
     transition: 'all 0.3s ease',
   },
-  userSection: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '1rem',
-  },
-  userName: {
-    color: 'rgba(255, 255, 255, 0.8)',
-    fontSize: '0.9rem',
-  },
+      userSection: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1rem',
+      },
+      userInfo: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+        gap: '0.5rem',
+      },
+      userName: {
+        color: 'rgba(255, 255, 255, 0.8)',
+        fontSize: '0.9rem',
+      },
+      roleBadge: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.3rem',
+        padding: '0.2rem 0.6rem',
+        borderRadius: '12px',
+        fontSize: '0.75rem',
+        fontWeight: '600',
+        color: 'white',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+      },
+      roleIcon: {
+        fontSize: '0.8rem',
+      },
+      roleText: {
+        fontSize: '0.7rem',
+        fontWeight: '600',
+      },
   main: {
     paddingTop: '80px',
     width: '100%',
@@ -373,15 +499,111 @@ const styles = {
     marginBottom: '1rem',
     fontSize: '0.9rem',
   },
-  contentType: {
-    backgroundColor: '#667eea',
-    color: 'white',
-    padding: '0.3rem 0.8rem',
-    borderRadius: '20px',
-    fontSize: '0.8rem',
-    fontWeight: '600',
-    display: 'inline-block',
-  },
+      contentType: {
+        backgroundColor: '#667eea',
+        color: 'white',
+        padding: '0.3rem 0.8rem',
+        borderRadius: '20px',
+        fontSize: '0.8rem',
+        fontWeight: '600',
+        display: 'inline-block',
+      },
+      // Admin Dashboard Styles
+      adminSection: {
+        padding: '4rem 2rem',
+        backgroundColor: 'rgba(255, 107, 107, 0.05)',
+        borderTop: '1px solid rgba(255, 107, 107, 0.2)',
+      },
+      adminGrid: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '2rem',
+        maxWidth: '1200px',
+        margin: '0 auto',
+      },
+      adminCard: {
+        backgroundColor: 'rgba(255, 107, 107, 0.1)',
+        borderRadius: '12px',
+        padding: '2rem',
+        border: '1px solid rgba(255, 107, 107, 0.2)',
+        textAlign: 'center',
+        transition: 'transform 0.3s ease',
+      },
+      adminIcon: {
+        fontSize: '3rem',
+        marginBottom: '1rem',
+      },
+      adminTitle: {
+        fontSize: '1.3rem',
+        fontWeight: '600',
+        marginBottom: '1rem',
+        color: '#ff6b6b',
+      },
+      adminDesc: {
+        color: 'rgba(255, 255, 255, 0.7)',
+        marginBottom: '1.5rem',
+        lineHeight: 1.5,
+      },
+      adminBtn: {
+        backgroundColor: '#ff6b6b',
+        color: 'white',
+        border: 'none',
+        padding: '0.8rem 1.5rem',
+        borderRadius: '8px',
+        fontSize: '0.9rem',
+        fontWeight: '600',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+        boxShadow: '0 4px 15px rgba(255, 107, 107, 0.3)',
+      },
+      // Creator Dashboard Styles
+      creatorSection: {
+        padding: '4rem 2rem',
+        backgroundColor: 'rgba(72, 219, 251, 0.05)',
+        borderTop: '1px solid rgba(72, 219, 251, 0.2)',
+      },
+      creatorGrid: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '2rem',
+        maxWidth: '1200px',
+        margin: '0 auto',
+      },
+      creatorCard: {
+        backgroundColor: 'rgba(72, 219, 251, 0.1)',
+        borderRadius: '12px',
+        padding: '2rem',
+        border: '1px solid rgba(72, 219, 251, 0.2)',
+    textAlign: 'center',
+        transition: 'transform 0.3s ease',
+      },
+      creatorIcon: {
+        fontSize: '3rem',
+        marginBottom: '1rem',
+      },
+      creatorTitle: {
+        fontSize: '1.3rem',
+        fontWeight: '600',
+        marginBottom: '1rem',
+        color: '#48dbfb',
+      },
+      creatorDesc: {
+        color: 'rgba(255, 255, 255, 0.7)',
+        marginBottom: '1.5rem',
+        lineHeight: 1.5,
+      },
+      creatorBtn: {
+        backgroundColor: '#48dbfb',
+        color: 'white',
+        border: 'none',
+        padding: '0.8rem 1.5rem',
+        borderRadius: '8px',
+        fontSize: '0.9rem',
+        fontWeight: '600',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+        boxShadow: '0 4px 15px rgba(72, 219, 251, 0.3)',
+      },
   footer: {
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
     padding: '3rem 2rem 1rem',
