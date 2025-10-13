@@ -7,17 +7,26 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 
 function AppContent() {
   const { user } = useUser();
+  const [currentPath, setCurrentPath] = useState(window.location.hash.replace('#', '') || window.location.pathname);
+  
   console.log('App component rendering');
 
-  // Check current route
-  const currentPath = window.location.pathname;
+  // Listen for hash changes
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentPath(window.location.hash.replace('#', '') || window.location.pathname);
+    };
+    
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
   
   // Handle legal pages
-  if (currentPath === '/terms-of-service.html' || currentPath === '/terms-of-service') {
+  if (currentPath === '/terms-of-service.html' || currentPath === '/terms-of-service' || currentPath === 'terms-of-service') {
     return <TermsOfService />;
   }
   
-  if (currentPath === '/privacy-policy.html' || currentPath === '/privacy-policy') {
+  if (currentPath === '/privacy-policy.html' || currentPath === '/privacy-policy' || currentPath === 'privacy-policy') {
     return <PrivacyPolicy />;
   }
 
@@ -257,8 +266,8 @@ function AppContent() {
           </div>
           <div style={styles.footerSection}>
             <h4 style={styles.footerTitle}>Legal</h4>
-            <a href="/terms-of-service" style={styles.footerLink}>Terms of Service</a>
-            <a href="/privacy-policy" style={styles.footerLink}>Privacy Policy</a>
+            <a href="#terms-of-service" style={styles.footerLink}>Terms of Service</a>
+            <a href="#privacy-policy" style={styles.footerLink}>Privacy Policy</a>
             <a href="#" style={styles.footerLink}>Cookie Policy</a>
           </div>
         </div>
