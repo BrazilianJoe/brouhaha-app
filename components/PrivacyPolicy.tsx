@@ -289,7 +289,236 @@ export default function PrivacyPolicy() {
         fontSize: '1.5rem',
         borderBottom: '2px solid #667eea',
         paddingBottom: '0.5rem',
-      }}>7. Contact Information</h2>
+      }}>7. Data Retention and Deletion</h2>
+      
+      <h3 style={{
+        color: '#555',
+        marginTop: '1.5rem',
+        marginBottom: '0.5rem',
+        fontSize: '1.2rem',
+      }}>7.1 General Retention Policy</h3>
+      <p>We retain your personal data for as long as necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements. The specific retention periods depend on the type of data and the purpose for which it was collected.</p>
+      
+      <div style={{
+        backgroundColor: '#fff3cd',
+        padding: '1rem',
+        borderLeft: '4px solid #ffc107',
+        margin: '1rem 0',
+      }}>
+        <strong>Important:</strong> We may retain certain data for an indeterminate period when necessary for legitimate business purposes, legal compliance, or to protect our rights and interests.
+      </div>
+      
+      <h3 style={{
+        color: '#555',
+        marginTop: '1.5rem',
+        marginBottom: '0.5rem',
+        fontSize: '1.2rem',
+      }}>7.2 Account Deletion Upon Request</h3>
+      <p>You have the right to request deletion of your account and associated personal data. When you request account deletion:</p>
+      <ul style={{ marginLeft: '2rem', marginBottom: '1rem' }}>
+        <li>We will permanently delete your account and personal information</li>
+        <li>Your content will be removed from our platform</li>
+        <li>We will stop processing your data for our services</li>
+        <li>Deletion will be completed within 30 days of your request</li>
+      </ul>
+      
+      <div style={{
+        backgroundColor: '#d1ecf1',
+        padding: '1rem',
+        borderLeft: '4px solid #17a2b8',
+        margin: '1rem 0',
+      }}>
+        <strong>How to Request Deletion:</strong> Contact us at privacy@brouhaha.com or use the account deletion feature in your account settings. We may require verification of your identity before processing the request.
+      </div>
+      
+      <h3 style={{
+        color: '#555',
+        marginTop: '1.5rem',
+        marginBottom: '0.5rem',
+        fontSize: '1.2rem',
+      }}>7.3 Legal Requirements and Compliance</h3>
+      <p>We may retain certain data beyond normal retention periods when required by applicable laws, regulations, or legal processes:</p>
+      <ul style={{ marginLeft: '2rem', marginBottom: '1rem' }}>
+        <li><strong>Financial Records:</strong> Payment and billing information retained for 7 years as required by tax and accounting laws</li>
+        <li><strong>Legal Holds:</strong> Data preserved when subject to litigation, regulatory investigation, or law enforcement requests</li>
+        <li><strong>Audit Requirements:</strong> Records maintained for internal and external audit purposes</li>
+        <li><strong>Regulatory Compliance:</strong> Data retained to comply with industry-specific regulations</li>
+        <li><strong>Security Incidents:</strong> Information preserved for security investigation and prevention</li>
+      </ul>
+      
+      <div style={{
+        backgroundColor: '#f8d7da',
+        padding: '1rem',
+        borderLeft: '4px solid #dc3545',
+        margin: '1rem 0',
+      }}>
+        <strong>Legal Exception:</strong> Even if you request account deletion, we may retain certain data if we are legally required to do so or if retention is necessary to protect our legitimate interests, resolve disputes, or enforce our agreements.
+      </div>
+      
+      <h3 style={{
+        color: '#555',
+        marginTop: '1.5rem',
+        marginBottom: '0.5rem',
+        fontSize: '1.2rem',
+      }}>7.4 Data Retention Schedule</h3>
+      <table style={{
+        width: '100%',
+        borderCollapse: 'collapse',
+        margin: '1rem 0',
+      }}>
+        <thead>
+          <tr>
+            <th style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+              backgroundColor: '#f8f9fa',
+              fontWeight: '600',
+            }}>Data Type</th>
+            <th style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+              backgroundColor: '#f8f9fa',
+              fontWeight: '600',
+            }}>Retention Period</th>
+            <th style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+              backgroundColor: '#f8f9fa',
+              fontWeight: '600',
+            }}>Legal Basis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Account Information</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Until deletion request</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Service provision</td>
+          </tr>
+          <tr>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>User Content</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Until deletion request</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Platform functionality</td>
+          </tr>
+          <tr>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Payment Records</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>7 years minimum</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Tax and accounting laws</td>
+          </tr>
+          <tr>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Usage Analytics</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>24 months</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Service improvement</td>
+          </tr>
+          <tr>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Support Communications</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>3 years</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Customer service</td>
+          </tr>
+          <tr>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Legal Hold Data</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Until legal matter resolved</td>
+            <td style={{
+              border: '1px solid #ddd',
+              padding: '0.75rem',
+              textAlign: 'left',
+            }}>Legal obligation</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h3 style={{
+        color: '#555',
+        marginTop: '1.5rem',
+        marginBottom: '0.5rem',
+        fontSize: '1.2rem',
+      }}>7.5 Post-Deletion Rights</h3>
+      <p>After account deletion, you retain certain rights:</p>
+      <ul style={{ marginLeft: '2rem', marginBottom: '1rem' }}>
+        <li>Request confirmation that your data has been deleted</li>
+        <li>Receive a copy of any data that must be retained for legal reasons</li>
+        <li>Object to continued processing of retained data</li>
+        <li>Request restriction of processing for retained data</li>
+      </ul>
+      
+      <h2 style={{
+        color: '#333',
+        marginTop: '2rem',
+        marginBottom: '1rem',
+        fontSize: '1.5rem',
+        borderBottom: '2px solid #667eea',
+        paddingBottom: '0.5rem',
+      }}>8. Contact Information</h2>
       
       <h3 style={{
         color: '#555',
