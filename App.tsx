@@ -481,7 +481,47 @@ function App() {
   console.log('Key source:', Constants.expoConfig?.extra?.clerkPublishableKey ? 'Constants' : 'Fallback');
   
   return (
-    <ClerkProvider publishableKey={clerkPublishableKey}>
+    <ClerkProvider 
+      publishableKey={clerkPublishableKey}
+      appearance={{
+        baseTheme: undefined,
+        variables: {
+          colorPrimary: '#667eea',
+          colorBackground: '#0f0f23',
+          colorText: '#ffffff',
+          colorTextSecondary: 'rgba(255, 255, 255, 0.8)',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        },
+        elements: {
+          formButtonPrimary: {
+            backgroundColor: '#667eea',
+            '&:hover': {
+              backgroundColor: '#5a6fd8',
+            },
+          },
+          card: {
+            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+          },
+          headerTitle: {
+            color: '#ffffff',
+          },
+          headerSubtitle: {
+            color: 'rgba(255, 255, 255, 0.8)',
+          },
+          socialButtonsBlockButton: {
+            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            color: '#ffffff',
+          },
+          formFieldInput: {
+            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            color: '#ffffff',
+          },
+        },
+      }}
+    >
       <AppContent />
     </ClerkProvider>
   );
