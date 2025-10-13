@@ -30,6 +30,11 @@ function AppContent() {
   const userEmail = user?.emailAddresses?.[0]?.emailAddress;
   const userRole = getUserRole(userEmail);
   const roleInfo = getRoleInfo(userRole);
+  
+  // Debug logging
+  console.log('User email:', userEmail);
+  console.log('Detected role:', userRole);
+  console.log('Role info:', roleInfo);
 
   return (
     <div style={styles.container}>
@@ -58,6 +63,10 @@ function AppContent() {
               <div style={styles.userSection}>
                 <div style={styles.userInfo}>
                   <span style={styles.userName}>Welcome, {user?.firstName || user?.emailAddresses[0]?.emailAddress}</span>
+                  {/* Debug info */}
+                  <div style={{fontSize: '0.7rem', color: '#ff6b6b', marginBottom: '0.3rem'}}>
+                    DEBUG: {userEmail} → {userRole}
+                  </div>
                   <div style={{...styles.roleBadge, backgroundColor: roleInfo.color}}>
                     <span style={styles.roleIcon}>{roleInfo.icon}</span>
                     <span style={styles.roleText}>{roleInfo.name}</span>
