@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, AppRegistry } from 'react-native';
 
 export default function App() {
   console.log('App component rendering');
@@ -55,3 +55,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
 });
+
+// Register the main component for React Native Web
+AppRegistry.registerComponent('main', () => App);
