@@ -615,12 +615,31 @@ function App() {
           },
           // "Secured by Clerk" text
           securedByText: {
-            color: 'rgba(255, 255, 255, 0.7)',
+            color: 'rgba(255, 255, 255, 0.9)',
             fontSize: '0.75rem',
+            fontWeight: '500',
           },
           securedByBrand: {
-            color: '#667eea',
-            fontWeight: '600',
+            color: '#feca57',
+            fontWeight: '700',
+            filter: 'brightness(1.2)',
+          },
+          // Alternative selectors for "Secured by Clerk"
+          footerText: {
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontSize: '0.75rem',
+            fontWeight: '500',
+          },
+          footerBranding: {
+            color: '#feca57',
+            fontWeight: '700',
+            filter: 'brightness(1.2)',
+          },
+          // Generic footer text improvements
+          footerActionText: {
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontSize: '0.8rem',
+            fontWeight: '500',
           },
           // Clerk footer elements
           clerkFooter: {
