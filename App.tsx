@@ -137,7 +137,6 @@ function App() {
 
 const styles = {
   container: {
-    minHeight: '100vh',
     backgroundColor: '#0f0f23',
     color: 'white',
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -409,17 +408,26 @@ const styles = {
 
 // Mount the app
 if (typeof window !== 'undefined') {
-  // Ensure scrollbars are visible
+  // Ensure single scrollbar and prevent double scrollbars
   const style = document.createElement('style');
   style.textContent = `
-    body {
-      overflow: auto !important;
-    }
     html {
       overflow: auto !important;
+      height: 100% !important;
+    }
+    body {
+      overflow: auto !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
     #root {
       overflow: visible !important;
+      height: auto !important;
+      min-height: 100vh !important;
+    }
+    * {
+      box-sizing: border-box !important;
     }
   `;
   document.head.appendChild(style);
