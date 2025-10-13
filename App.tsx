@@ -143,6 +143,10 @@ const styles = {
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     margin: 0,
     padding: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
   },
   header: {
     position: 'fixed',
