@@ -30,11 +30,6 @@ function AppContent() {
   const userEmail = user?.emailAddresses?.[0]?.emailAddress;
   const userRole = getUserRole(userEmail);
   const roleInfo = getRoleInfo(userRole);
-  
-  // Debug logging
-  console.log('User email:', userEmail);
-  console.log('Detected role:', userRole);
-  console.log('Role info:', roleInfo);
 
   return (
     <div style={styles.container}>
@@ -63,10 +58,6 @@ function AppContent() {
               <div style={styles.userSection}>
                 <div style={styles.userInfo}>
                   <span style={styles.userName}>Welcome, {user?.firstName || user?.emailAddresses[0]?.emailAddress}</span>
-                  {/* Debug info */}
-                  <div style={{fontSize: '0.7rem', color: '#ff6b6b', marginBottom: '0.3rem'}}>
-                    DEBUG: {userEmail} → {userRole}
-                  </div>
                   <div style={{...styles.roleBadge, backgroundColor: roleInfo.color}}>
                     <span style={styles.roleIcon}>{roleInfo.icon}</span>
                     <span style={styles.roleText}>{roleInfo.name}</span>
@@ -249,6 +240,12 @@ function AppContent() {
             <a href="#" style={styles.footerLink}>Help Center</a>
             <a href="#" style={styles.footerLink}>Contact Us</a>
             <a href="#" style={styles.footerLink}>Community</a>
+          </div>
+          <div style={styles.footerSection}>
+            <h4 style={styles.footerTitle}>Legal</h4>
+            <a href="/terms-of-service.html" style={styles.footerLink}>Terms of Service</a>
+            <a href="/privacy-policy.html" style={styles.footerLink}>Privacy Policy</a>
+            <a href="#" style={styles.footerLink}>Cookie Policy</a>
           </div>
         </div>
         <div style={styles.footerBottom}>
