@@ -20,7 +20,11 @@
       "package": "com.brouhaha.app"
     },
     "web": {
-      "bundler": "metro"
+      "bundler": "metro",
+      "entryPoint": "./App.tsx"
+    },
+    "extra": {
+      "clerkPublishableKey": "pk_test_c3VpdGVkLWtvZGlhay05NC5jbGVyay5hY2NvdW50cy5kZXYk"
     },
     "platforms": ["ios", "android", "web"]
   }

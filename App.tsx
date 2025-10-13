@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from '@clerk/clerk-react';
+import Constants from 'expo-constants';
 
 function AppContent() {
   const { user } = useUser();
@@ -458,6 +459,9 @@ if (typeof window !== 'undefined') {
     process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY = 'pk_test_c3VpdGVkLWtvZGlhay05NC5jbGVyay5hY2NvdW50cy5kZXYk';
   }
   
+  // Also set on window for web access
+  (window as any).__CLERK_PUBLISHABLE_KEY__ = 'pk_test_c3VpdGVkLWtvZGlhay05NC5jbGVyay5hY2NvdW50cy5kZXYk';
+  
   const container = document.getElementById('root');
   if (container) {
     const root = createRoot(container);
@@ -466,13 +470,16 @@ if (typeof window !== 'undefined') {
 }
 
 function App() {
-  const clerkPublishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  // Try multiple sources for the Clerk publishable key
+  const clerkPublishableKey = 
+    Constants.expoConfig?.extra?.clerkPublishableKey ||
+    (typeof window !== 'undefined' ? (window as any).__CLERK_PUBLISHABLE_KEY__ : null) ||
+    process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY ||
+    'pk_test_c3VpdGVkLWtvZGlhay05NC5jbGVyay5hY2NvdW50cy5kZXYk';
   
-  if (!clerkPublishableKey) {
-    console.error('Missing Clerk publishable key');
-    return <div>Missing Clerk configuration</div>;
-  }
-
+  console.log('Clerk publishable key:', clerkPublishableKey ? 'Found' : 'Missing');
+  console.log('Key source:', Constants.expoConfig?.extra?.clerkPublishableKey ? 'Constants' : 'Fallback');
+  
   return (
     <ClerkProvider publishableKey={clerkPublishableKey}>
       <AppContent />

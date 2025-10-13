@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brouhaha Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        #root {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .test-content {
+            text-align: center;
+            color: white;
+            max-width: 400px;
+            padding: 20px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        .description {
+            font-size: 16px;
+            opacity: 0.7;
+            margin-bottom: 30px;
+            line-height: 24px;
+        }
+        .status {
+            font-size: 16px;
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="test-content">
+            <div class="title">Welcome to Brouhaha</div>
+            <div class="subtitle">Media Platform</div>
+            <div class="description">
+                Cross-platform media consumption for webtoons, books, and videos
+            </div>
+            <div class="status">
+                ✅ HTML Test Page Working!
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        console.log('Test page loaded');
+        console.log('Root element:', document.getElementById('root'));
+    </script>
+</body>
+</html>
