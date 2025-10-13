@@ -2,10 +2,24 @@ import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from '@clerk/clerk-react';
 import Constants from 'expo-constants';
+import TermsOfService from './components/TermsOfService';
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 function AppContent() {
   const { user } = useUser();
   console.log('App component rendering');
+
+  // Check current route
+  const currentPath = window.location.pathname;
+  
+  // Handle legal pages
+  if (currentPath === '/terms-of-service.html' || currentPath === '/terms-of-service') {
+    return <TermsOfService />;
+  }
+  
+  if (currentPath === '/privacy-policy.html' || currentPath === '/privacy-policy') {
+    return <PrivacyPolicy />;
+  }
 
   // Mock role system - in real app, this would come from your backend
   const getUserRole = (email) => {
@@ -243,8 +257,8 @@ function AppContent() {
           </div>
           <div style={styles.footerSection}>
             <h4 style={styles.footerTitle}>Legal</h4>
-            <a href="/terms-of-service.html" style={styles.footerLink}>Terms of Service</a>
-            <a href="/privacy-policy.html" style={styles.footerLink}>Privacy Policy</a>
+            <a href="/terms-of-service" style={styles.footerLink}>Terms of Service</a>
+            <a href="/privacy-policy" style={styles.footerLink}>Privacy Policy</a>
             <a href="#" style={styles.footerLink}>Cookie Policy</a>
           </div>
         </div>
