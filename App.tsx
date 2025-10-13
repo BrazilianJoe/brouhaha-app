@@ -193,9 +193,6 @@ const styles = {
   },
   main: {
     paddingTop: '80px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
     width: '100%',
   },
   heroContent: {
@@ -284,9 +281,6 @@ const styles = {
     padding: '4rem 2rem',
     maxWidth: '1200px',
     margin: '0 auto',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
   },
   sectionTitle: {
     fontSize: '2.5rem',
@@ -327,9 +321,6 @@ const styles = {
   contentPreview: {
     padding: '4rem 2rem',
     backgroundColor: 'rgba(255, 255, 255, 0.02)',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
   },
   contentGrid: {
     display: 'grid',
