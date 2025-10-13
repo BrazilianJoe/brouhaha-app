@@ -493,31 +493,66 @@ function App() {
           fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
         },
         elements: {
+          modalBackdrop: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          },
+          modalContent: {
+            backgroundColor: '#1a1a2e',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            borderRadius: '12px',
+          },
+          card: {
+            backgroundColor: '#1a1a2e',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            borderRadius: '12px',
+          },
           formButtonPrimary: {
             backgroundColor: '#667eea',
             '&:hover': {
               backgroundColor: '#5a6fd8',
             },
           },
-          card: {
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-          },
           headerTitle: {
             color: '#ffffff',
+            fontWeight: '600',
           },
           headerSubtitle: {
-            color: 'rgba(255, 255, 255, 0.8)',
+            color: 'rgba(255, 255, 255, 0.9)',
           },
           socialButtonsBlockButton: {
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
             color: '#ffffff',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 0.15)',
+            },
           },
           formFieldInput: {
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
             color: '#ffffff',
+            borderRadius: '8px',
+            '&:focus': {
+              borderColor: '#667eea',
+              boxShadow: '0 0 0 2px rgba(102, 126, 234, 0.2)',
+            },
+          },
+          formFieldLabel: {
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontWeight: '500',
+          },
+          footerActionText: {
+            color: 'rgba(255, 255, 255, 0.8)',
+          },
+          footerActionLink: {
+            color: '#667eea',
+            fontWeight: '500',
+          },
+          dividerLine: {
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          },
+          dividerText: {
+            color: 'rgba(255, 255, 255, 0.7)',
           },
         },
       }}
