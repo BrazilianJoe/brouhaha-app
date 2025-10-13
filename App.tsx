@@ -484,7 +484,7 @@ function App() {
     <ClerkProvider 
       publishableKey={clerkPublishableKey}
       appearance={{
-        baseTheme: undefined,
+        baseTheme: 'dark',
         variables: {
           colorPrimary: '#667eea',
           colorBackground: '#0f0f23',
