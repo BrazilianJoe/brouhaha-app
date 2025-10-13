@@ -418,21 +418,6 @@ const styles = {
 
 // Mount the app
 if (typeof window !== 'undefined') {
-  // Fix scrolling by overriding Expo's default styles
-  const style = document.createElement('style');
-  style.textContent = `
-    body {
-      overflow: auto !important;
-    }
-    html {
-      overflow: auto !important;
-    }
-    #root {
-      overflow: visible !important;
-    }
-  `;
-  document.head.appendChild(style);
-  
   const container = document.getElementById('root');
   if (container) {
     const root = createRoot(container);
