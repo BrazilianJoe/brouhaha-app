@@ -591,6 +591,54 @@ function App() {
             color: '#667eea',
             filter: 'brightness(1.1)',
           },
+          // Clerk branding elements
+          footer: {
+            backgroundColor: 'transparent',
+          },
+          footerText: {
+            color: 'rgba(255, 255, 255, 0.6)',
+            fontSize: '0.8rem',
+          },
+          footerBranding: {
+            color: '#667eea',
+            fontWeight: '500',
+          },
+          // Clerk logo and branding
+          logoBox: {
+            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+            border: '1px solid rgba(102, 126, 234, 0.3)',
+            borderRadius: '6px',
+            padding: '0.5rem',
+          },
+          logoImage: {
+            filter: 'brightness(1.5) contrast(1.2)',
+          },
+          // "Secured by Clerk" text
+          securedByText: {
+            color: 'rgba(255, 255, 255, 0.7)',
+            fontSize: '0.75rem',
+          },
+          securedByBrand: {
+            color: '#667eea',
+            fontWeight: '600',
+          },
+          // Clerk footer elements
+          clerkFooter: {
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            padding: '1rem',
+          },
+          clerkFooterText: {
+            color: 'rgba(255, 255, 255, 0.6)',
+            fontSize: '0.8rem',
+          },
+          clerkFooterLink: {
+            color: '#667eea',
+            textDecoration: 'none',
+            '&:hover': {
+              color: '#5a6fd8',
+            },
+          },
         },
       }}
     >
