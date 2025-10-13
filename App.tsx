@@ -639,6 +639,80 @@ function App() {
               color: '#5a6fd8',
             },
           },
+          // UserButton profile dropdown
+          userButtonPopoverCard: {
+            backgroundColor: '#1a1a2e',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            borderRadius: '12px',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+          },
+          userButtonPopoverActions: {
+            backgroundColor: 'transparent',
+          },
+          userButtonPopoverActionButton: {
+            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            color: '#ffffff',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              borderColor: 'rgba(255, 255, 255, 0.2)',
+            },
+          },
+          userButtonPopoverActionButtonText: {
+            color: '#ffffff',
+            fontWeight: '500',
+          },
+          userButtonPopoverActionButtonIcon: {
+            color: '#667eea',
+            filter: 'brightness(1.3)',
+          },
+          userButtonPopoverFooter: {
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+          },
+          userButtonPopoverFooterText: {
+            color: 'rgba(255, 255, 255, 0.6)',
+            fontSize: '0.8rem',
+          },
+          userButtonPopoverFooterLink: {
+            color: '#667eea',
+            fontWeight: '500',
+            '&:hover': {
+              color: '#5a6fd8',
+            },
+          },
+          // Profile modal specific elements
+          profileSectionTitle: {
+            color: '#ffffff',
+            fontWeight: '600',
+            fontSize: '1rem',
+          },
+          profileSectionContent: {
+            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: '8px',
+            padding: '1rem',
+          },
+          profileFieldLabel: {
+            color: 'rgba(255, 255, 255, 0.8)',
+            fontWeight: '500',
+            fontSize: '0.9rem',
+          },
+          profileFieldValue: {
+            color: '#ffffff',
+            fontSize: '0.9rem',
+          },
+          profileActionButton: {
+            backgroundColor: '#667eea',
+            color: '#ffffff',
+            border: 'none',
+            borderRadius: '6px',
+            padding: '0.5rem 1rem',
+            fontWeight: '500',
+            '&:hover': {
+              backgroundColor: '#5a6fd8',
+            },
+          },
         },
       }}
     >
