@@ -527,6 +527,14 @@ function App() {
               backgroundColor: 'rgba(255, 255, 255, 0.15)',
             },
           },
+          socialButtonsBlockButtonText: {
+            color: '#ffffff',
+            fontWeight: '500',
+          },
+          socialButtonsBlockButtonIcon: {
+            color: '#667eea',
+            filter: 'brightness(1.2)',
+          },
           formFieldInput: {
             backgroundColor: 'rgba(255, 255, 255, 0.1)',
             border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -553,6 +561,35 @@ function App() {
           },
           dividerText: {
             color: 'rgba(255, 255, 255, 0.7)',
+          },
+          // Icon visibility improvements
+          iconButton: {
+            color: '#667eea',
+            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+            border: '1px solid rgba(102, 126, 234, 0.3)',
+            '&:hover': {
+              backgroundColor: 'rgba(102, 126, 234, 0.2)',
+              color: '#5a6fd8',
+            },
+          },
+          buttonIcon: {
+            color: '#667eea',
+            filter: 'brightness(1.3)',
+          },
+          // Form field icons
+          formFieldIcon: {
+            color: '#667eea',
+            opacity: '0.8',
+          },
+          // Header icons
+          headerIcon: {
+            color: '#feca57',
+            filter: 'brightness(1.2)',
+          },
+          // Footer icons
+          footerIcon: {
+            color: '#667eea',
+            filter: 'brightness(1.1)',
           },
         },
       }}
