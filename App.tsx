@@ -192,6 +192,10 @@ const styles = {
   },
   main: {
     paddingTop: '80px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
   },
   heroContent: {
     textAlign: 'center',
