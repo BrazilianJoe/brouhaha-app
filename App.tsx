@@ -26,30 +26,30 @@ function App() {
             Welcome to <span style={styles.accent}>Brouhaha</span>
           </h1>
           <h2 style={styles.subtitle}>
-            The Ultimate Cross-Platform Media Experience
+            The Ultimate Entertainment Platform
           </h2>
           <p style={styles.description}>
-            Immerse yourself in webtoons, books, and videos across all your devices. 
-            Join thousands of creators and readers in our vibrant community.
+            Dive into amazing webtoons, books, and videos across all your devices. 
+            Discover endless entertainment with our curated content library.
           </p>
           
           <div style={styles.ctaButtons}>
-            <button style={styles.primaryBtn}>Start Reading Free</button>
-            <button style={styles.secondaryBtn}>Become a Creator</button>
+            <button style={styles.primaryBtn}>Start Watching Free</button>
+            <button style={styles.secondaryBtn}>Self-Publish Content</button>
           </div>
 
           <div style={styles.stats}>
             <div style={styles.stat}>
+              <div style={styles.statNumber}>50K+</div>
+              <div style={styles.statLabel}>Happy Viewers</div>
+            </div>
+            <div style={styles.stat}>
               <div style={styles.statNumber}>10K+</div>
-              <div style={styles.statLabel}>Active Readers</div>
+              <div style={styles.statLabel}>Content Hours</div>
             </div>
             <div style={styles.stat}>
-              <div style={styles.statNumber}>5K+</div>
-              <div style={styles.statLabel}>Content Pieces</div>
-            </div>
-            <div style={styles.stat}>
-              <div style={styles.statNumber}>1K+</div>
-              <div style={styles.statLabel}>Creators</div>
+              <div style={styles.statNumber}>500+</div>
+              <div style={styles.statLabel}>Self-Publishers</div>
             </div>
           </div>
         </div>
@@ -60,23 +60,23 @@ function App() {
           <div style={styles.featuresGrid}>
             <div style={styles.feature}>
               <div style={styles.featureIcon}>📱</div>
-              <h4 style={styles.featureTitle}>Cross-Platform</h4>
-              <p style={styles.featureDesc}>Access your content on web, iOS, and Android seamlessly</p>
+              <h4 style={styles.featureTitle}>Watch Anywhere</h4>
+              <p style={styles.featureDesc}>Seamless entertainment across web, iOS, and Android devices</p>
+            </div>
+            <div style={styles.feature}>
+              <div style={styles.featureIcon}>🎬</div>
+              <h4 style={styles.featureTitle}>Curated Content</h4>
+              <p style={styles.featureDesc}>Hand-picked webtoons, books, and videos for maximum enjoyment</p>
+            </div>
+            <div style={styles.feature}>
+              <div style={styles.featureIcon}>💎</div>
+              <h4 style={styles.featureTitle}>Premium Experience</h4>
+              <p style={styles.featureDesc}>Ad-free viewing with exclusive content and early access</p>
             </div>
             <div style={styles.feature}>
               <div style={styles.featureIcon}>🎨</div>
-              <h4 style={styles.featureTitle}>Creator Tools</h4>
-              <p style={styles.featureDesc}>Powerful tools for webtoon artists, authors, and video creators</p>
-            </div>
-            <div style={styles.feature}>
-              <div style={styles.featureIcon}>💰</div>
-              <h4 style={styles.featureTitle}>Fair Monetization</h4>
-              <p style={styles.featureDesc}>Multiple revenue streams: ads, subscriptions, and donations</p>
-            </div>
-            <div style={styles.feature}>
-              <div style={styles.featureIcon}>🔒</div>
-              <h4 style={styles.featureTitle}>DRM Protected</h4>
-              <p style={styles.featureDesc}>Advanced protection for creators' intellectual property</p>
+              <h4 style={styles.featureTitle}>Self-Publish</h4>
+              <p style={styles.featureDesc}>Share your creations with our community of entertainment lovers</p>
             </div>
           </div>
         </section>
@@ -99,8 +99,8 @@ function App() {
             </div>
             <div style={styles.contentCard}>
               <div style={styles.contentThumbnail}>🎬</div>
-              <h4 style={styles.contentTitle}>Documentary Series</h4>
-              <p style={styles.contentDesc}>Educational video content</p>
+              <h4 style={styles.contentTitle}>Action Thriller</h4>
+              <p style={styles.contentDesc}>High-octane entertainment</p>
               <div style={styles.contentType}>VIDEO</div>
             </div>
           </div>
@@ -118,7 +118,7 @@ function App() {
             <h4 style={styles.footerTitle}>Platform</h4>
             <a href="#" style={styles.footerLink}>Web App</a>
             <a href="#" style={styles.footerLink}>Mobile Apps</a>
-            <a href="#" style={styles.footerLink}>Creator Tools</a>
+            <a href="#" style={styles.footerLink}>Self-Publishing</a>
           </div>
           <div style={styles.footerSection}>
             <h4 style={styles.footerTitle}>Support</h4>
@@ -279,6 +279,9 @@ const styles = {
     padding: '4rem 2rem',
     maxWidth: '1200px',
     margin: '0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   sectionTitle: {
     fontSize: '2.5rem',
@@ -319,6 +322,9 @@ const styles = {
   contentPreview: {
     padding: '4rem 2rem',
     backgroundColor: 'rgba(255, 255, 255, 0.02)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   contentGrid: {
     display: 'grid',
