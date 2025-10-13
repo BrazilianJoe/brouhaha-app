@@ -58,3 +58,10 @@ const styles = StyleSheet.create({
 
 // Register the main component for React Native Web
 AppRegistry.registerComponent('main', () => App);
+
+// Auto-mount for web
+if (typeof window !== 'undefined') {
+  AppRegistry.runApplication('main', {
+    rootTag: document.getElementById('root'),
+  });
+}
