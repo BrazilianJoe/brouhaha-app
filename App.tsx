@@ -706,12 +706,20 @@ if (typeof window !== 'undefined') {
   document.head.appendChild(style);
   
   // Set environment variables for Clerk
-  if (!process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY) {
-    process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY = 'pk_test_c3VpdGVkLWtvZGlhay05NC5jbGVyay5hY2NvdW50cy5kZXYk';
+  const clerkPublishableKey = 
+    Constants.expoConfig?.extra?.clerkPublishableKey ||
+    (typeof window !== 'undefined' ? (window as any).__CLERK_PUBLISHABLE_KEY__ : null) ||
+    process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+    // ⚠️  SECURITY: Removed hardcoded fallback key - use environment variables
+    // If this is undefined, Clerk authentication will fail (which is correct for security)
+  
+  if (!clerkPublishableKey) {
+    console.error('❌ CRITICAL: Clerk publishable key not configured');
+    console.error('   Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY environment variable');
+    // In production, you might want to show an error page instead of console error
   }
   
-  // Also set on window for web access
-  (window as any).__CLERK_PUBLISHABLE_KEY__ = 'pk_test_c3VpdGVkLWtvZGlhay05NC5jbGVyay5hY2NvdW50cy5kZXYk';
+  console.log('✅ Clerk key loaded from environment');
   
   const container = document.getElementById('root');
   if (container) {
@@ -725,8 +733,7 @@ function App() {
   const clerkPublishableKey = 
     Constants.expoConfig?.extra?.clerkPublishableKey ||
     (typeof window !== 'undefined' ? (window as any).__CLERK_PUBLISHABLE_KEY__ : null) ||
-    process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY ||
-    'pk_test_c3VpdGVkLWtvZGlhay05NC5jbGVyay5hY2NvdW50cy5kZXYk';
+    process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
   
   console.log('Clerk publishable key:', clerkPublishableKey ? 'Found' : 'Missing');
   console.log('Key source:', Constants.expoConfig?.extra?.clerkPublishableKey ? 'Constants' : 'Fallback');

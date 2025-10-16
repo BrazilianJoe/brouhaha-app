@@ -1,6 +1,53 @@
-node_modules
-# Keep environment variables out of version control
-.env
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
 
-/generated/prisma
-.vercel
+# Environment Variables (NEVER COMMIT THESE!)
+.env
+.env.local
+.env.*.local
+.env.*.example
+
+# Build outputs
+dist/
+build/
+.expo/
+.expo-shared/
+*.jsbundle
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.classpath
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Mobile build artifacts
+ios/Pods/
+ios/Podfile.lock
+android/local.properties
+android/.gradle/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# OS-specific
+Thumbs.db
+.DS_Store

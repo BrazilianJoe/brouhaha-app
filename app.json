@@ -24,8 +24,13 @@
       "entryPoint": "./App.tsx"
     },
     "extra": {
-      "clerkPublishableKey": "pk_test_c3VpdGVkLWtvZGlhay05NC5jbGVyay5hY2NvdW50cy5kZXYk"
+      // ⚠️  SECURITY: Never hardcode secrets here!
+      // Use environment variables instead
+      // Read from process.env or expo-constants in App.tsx
+      // See: https://docs.expo.dev/guides/environment-variables/
+      "clerkPublishableKey": "$EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY"
     },
-    "platforms": ["ios", "android", "web"]
+    "platforms": ["ios", "android", "web"],
+    "plugins": []
   }
 }
