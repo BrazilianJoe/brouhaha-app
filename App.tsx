@@ -707,11 +707,10 @@ if (typeof window !== 'undefined') {
   
   // Set environment variables for Clerk
   const clerkPublishableKey = 
-    Constants.expoConfig?.extra?.clerkPublishableKey ||
-    (typeof window !== 'undefined' ? (window as any).__CLERK_PUBLISHABLE_KEY__ : null) ||
-    process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
-    // ⚠️  SECURITY: Removed hardcoded fallback key - use environment variables
-    // If this is undefined, Clerk authentication will fail (which is correct for security)
+    process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY ||
+    (typeof window !== 'undefined' ? (window as any).__CLERK_PUBLISHABLE_KEY__ : null);
+    // ⚠️  SECURITY: Only use environment variables
+    // app.json cannot substitute environment variables, so we skip it
   
   if (!clerkPublishableKey) {
     console.error('❌ CRITICAL: Clerk publishable key not configured');

@@ -25,10 +25,8 @@
     },
     "extra": {
       // ⚠️  SECURITY: Never hardcode secrets here!
-      // Use environment variables instead
-      // Read from process.env or expo-constants in App.tsx
+      // Use environment variables instead - read from process.env in App.tsx
       // See: https://docs.expo.dev/guides/environment-variables/
-      "clerkPublishableKey": "$EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY"
     },
     "platforms": ["ios", "android", "web"],
     "plugins": []
