@@ -126,7 +126,7 @@ export default function LegalPage({ title, content }: LegalPageProps) {
       <header style={styles.header}>
         <nav style={styles.nav}>
           <div style={styles.logo}>Brouhaha</div>
-          <a href="#" onClick={() => window.location.hash = ''} style={styles.backLink}>← Back to Brouhaha</a>
+          <a href="/" style={styles.backLink}>← Back to Brouhaha</a>
         </nav>
       </header>
       
