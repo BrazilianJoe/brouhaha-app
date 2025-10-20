@@ -305,6 +305,43 @@ if (!clerkKey) {
 }
 ```
 
+### Expo Platform Security (Web, iOS, Android)
+
+- **Platform-appropriate auth libraries**:
+  - **Web**: use `@clerk/clerk-react` with secure, httpOnly cookies.
+  - **iOS/Android**: use `@clerk/clerk-expo` with a `SecureStore` token cache.
+- **Never expose secrets in the bundle**:
+  - Only use `EXPO_PUBLIC_*` for values safe to ship to clients.
+  - Do not put secrets in `app.json` `extra`; prefer environment variables injected at build/runtime.
+- **Token storage rules**:
+  - Web: cookies with `httpOnly`, `Secure`, `SameSite=strict`.
+  - Native: `expo-secure-store` (not `AsyncStorage`).
+- **DOM APIs in shared code**:
+  - Avoid importing `react-dom` or using `window/document` in shared modules.
+  - If needed, guard with `Platform.OS === 'web'` and `typeof window !== 'undefined'`.
+- **CSP/CORS for web**:
+  - Enforce a strict Content Security Policy and restrict `connect-src` to known domains.
+  - Restrict CORS to trusted origins via `CORS_ORIGIN` (no `*` in production).
+- **Network hardening on mobile**:
+  - Enforce HTTPS everywhere; implement certificate pinning in EAS builds.
+  - Validate TLS and fail closed on validation errors.
+
+```typescript
+// Example: Clerk Expo with SecureStore token cache (native)
+import * as SecureStore from 'expo-secure-store';
+
+const tokenCache = {
+  async getToken(key: string) {
+    return SecureStore.getItemAsync(key);
+  },
+  async saveToken(key: string, value: string) {
+    await SecureStore.setItemAsync(key, value);
+  },
+};
+
+// <ClerkProvider publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY} tokenCache={tokenCache}>
+```
+
 ### API Security
 
 #### 1. **Authentication** (REQUIRED on all endpoints except `/api/auth`)
@@ -425,9 +462,10 @@ return createErrorResponse(res, 500, 'Internal server error');
 - Verify origin on state-changing requests
 
 #### 3. **Secure Token Storage**
-- Store JWT tokens in secure, httpOnly cookies (not localStorage)
-- Auto-clear on logout
-- Set appropriate expiration times
+- **Web**: Store tokens in secure, httpOnly cookies (never `localStorage`/`sessionStorage`).
+- **iOS/Android**: Use `expo-secure-store` via `@clerk/clerk-expo` token cache (never `AsyncStorage`).
+- Auto-clear on logout and on token invalidation.
+- Prefer short-lived tokens with refresh rotation.
 
 ### Development Workflow
 
